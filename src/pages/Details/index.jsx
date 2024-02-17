@@ -8,7 +8,9 @@ export function Details() {
       <h1>Grace Kelly</h1>
       <span>ótima de excelente!</span>
 
-      <Button />
+      <Button title="Login" loading/>
+      <Button title="Cadastrar"/>
+      <Button title="Voltar"/>
     </Container>    
   )
 }
