@@ -1,4 +1,5 @@
 import { Container } from "./styles";
+import { Button } from '../../components/Button';
 
 export function Details() {
 
@@ -6,6 +7,8 @@ export function Details() {
     <Container>
       <h1>Grace Kelly</h1>
       <span>ótima de excelente!</span>
+
+      <Button />
     </Container>    
   )
 }
