@@ -36,12 +36,12 @@ function AuthProvider({ children }) {
   
   async function updateProfile({ user }) {
     try {
-      const { ...userData } = user;
+      const updatedUserResponse = await api.put('/users', user);
+      const updatedUser = updatedUserResponse.data;
 
-      await api.put("/users", userData);
-      localStorage.setItem("@rocketnotes:user", JSON.stringify(userData));
+      localStorage.setItem('@rocketnotes:user', JSON.stringify(updatedUser));
 
-      setData({ user: userData, token: data.token })
+      setData({ user: updatedUser, token: data.token });
       alert("Perfil atualizado.")
       
     } catch (error) {
@@ -62,7 +62,7 @@ function AuthProvider({ children }) {
       
       setData ({
         token,
-        user: JSON.parse(user)
+        // user: JSON.parse(user)
       });
     }
   }, []);
