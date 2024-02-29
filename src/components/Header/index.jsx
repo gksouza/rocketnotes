@@ -9,14 +9,14 @@ import { api } from '../../services/api';
 
 export function Header() {
   const { signOut, user } = useAuth()  
-  const avatarURL = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder
 
   return (
     <Container>
       <Profile to="/profile">
         <img 
-          src={avatarURL}
-          alt= "Foto do usuário"
+          src={avatarUrl}
+          alt= {user.name}
         />
 
         <div>
