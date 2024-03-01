@@ -50,11 +50,11 @@ export function New() {
     }
 
     if(newLink) {
-      return alert("Clicar no + para adicionar.")
+      return alert("Clicar no (+) para adicionar.")
     }
 
     if(newTag) {
-      return alert("Clicar no + para adicionar.")
+      return alert("Clicar no (+) para adicionar.")
     }
 
     await api.post("/notes", {
