@@ -18,6 +18,8 @@ export function Home() {
   const [search, setSearch] = useState("")
   const [notes, setNotes] = useState([])
 
+  //console.log('tagsSelected: ', tagsSelected)
+
   const navigate = useNavigate()
   
   function handleTagSelected(tagName) {
@@ -50,9 +52,11 @@ export function Home() {
   }, [])
 
   useEffect(() => {
+    console.log('tagsSelected: ', tagsSelected)
+    console.log('search: ', search)
     async function fetchNotes() {
-      const response = await api.get(`/notes?title${search}&tags=${tagsSelected}`)
-      setNotes(response.data)
+      const response = await api.get(`/notes?title=${search}&tags=${tagsSelected}`)
+      setNotes(response.data)      
     }
 
     fetchNotes()
@@ -87,6 +91,11 @@ export function Home() {
         }     
       </Menu>
 
+      <NewNote to="new">
+        <FiPlus />
+        Criar nota
+      </NewNote>
+
       <Search>
         <Input
           placeholder="Pesquisar pelo título"
@@ -98,7 +107,7 @@ export function Home() {
         <Section title="Minhas notas">
           {
             notes.map(note => (
-            <Note 
+            <Note
               key={String(note.id)}
               data={note}
               onClick={() => handleDetails(note.id)}
@@ -106,12 +115,7 @@ export function Home() {
             ))
           }
         </Section>
-      </Content>
-
-      <NewNote to="new">
-        <FiPlus />
-        Criar nota
-      </NewNote>
+      </Content>      
     </Container>    
   );
 }
